@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row mt-4 mb-4">
+    <h2 class="title w-100"> Eat-Da-Burger </h2>
+    <img class="burgerpng" src="/assets/images/Emojit.png" alt="burger-image">
+  </div>
+  <div class="row mx-auto justify-content-center">
+    <form class="create-form">
+      <div class="form-group">
+        <label for="input" class="mx-auto w-100 text-center">Enter the Burger you want to eat and and click the "Submit" button</label>
+        <textarea class="form-control" id="input" rows="3"></textarea>
+        <button type="submit" class="btn btn-info mt-2 w-100" id="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-7">
+      {{!--
+      <div class="row mt-2 justify-content-between itemwrap p-2 rounded">
+        <i class="fas fa-bars fa-lg"></i>
+        <p> Chicken Burger</p>
+        <button type="submit" class="btn btn-warning flright">Devour It</button>
+      </div>
+      <div class="row mt-2 justify-content-between itemwrap p-2 rounded">
+        <i class="fas fa-bars fa-lg"></i>
+        <p> Chicken Burger With Extra Spacing</p>
+        <button type="submit" class="btn btn-warning flright">Devour It</button>
+      </div> --}} 
+      {{#each burgers}} {{#unless devoured}}
+      <div class="row mt-2 justify-content-between itemwrap p-2 rounded">
+        <i class="fas fa-bars fa-lg"></i>
+        <p> {{this.name}}</p>
+        <button type="submit" class="btn btn-warning flright" data-id="{{this.id}}">Devour It</button>
+      </div>
+      {{/unless}} {{/each}}
+    </div>
+    <div class="col-5 pl-4">
+      {{!--
+      <div class="row mt-2 justify-content-between endwrap p-2 rounded">
+        <p class="text-center w-100"> Chicken Burger</p>
+      </div> --}} 
+      {{#each burgers}} {{#if devoured}}
+      <div class="row mt-2 justify-content-between endwrap p-2 rounded">
+        <p class="text-center w-100"> {{this.name}}<i class="far fa-trash-alt fa-lg remove"  data-id="{{this.id}}"></i></p>
+      </div>
+      {{/if}} {{/each}}
+    </div>
+  </div>
+</div>
+<script src="/assets/js/burgers.js"></script>
